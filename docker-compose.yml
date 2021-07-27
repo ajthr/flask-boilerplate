@@ -1,0 +1,41 @@
+version: "3"
+
+services: 
+    app:
+        container_name: app
+        build: 
+            context: .
+        ports: 
+            - "5000:5000"
+        volumes: 
+            - ./app:/app
+        command: >
+            sh -c "python manage.py init &&
+                    python manage.py migrate &&
+                    python manage.py runserver"
+        environment: 
+            - DATABASE_HOST=db
+            - DATABASE_NAME=app
+            - DATABASE_PORT=3306
+            - DATABASE_USER=${DB_ADMIN_USER}
+            - DATABASE_PASSWORD=${DB_ADMIN_PWD}
+        depends_on: 
+            db:
+                condition: service_healthy
+    db:
+        container_name: database
+        image: mysql:8
+        restart: always
+        environment:
+            MYSQL_USER: ${DB_ADMIN_USER}
+            MYSQL_PASSWORD: ${DB_ADMIN_PWD}
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PWD}
+        volumes:
+               - ./app/db_data:/var/lib/mysql
+               - ./app/initdb:/docker-entrypoint-initdb.d
+        ports:
+            - "3306"
+        healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-P", "3306"]
+            timeout: 10s
+            retries: 10
