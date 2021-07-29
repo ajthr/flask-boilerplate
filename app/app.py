@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 from config import settings
 from config import db, migrate
@@ -21,9 +21,9 @@ migrate.init_app(app, db)
 # register blueprints
 app.register_blueprint(users_blueprint, url_prefix='/users')
 
-@app.route('/')
-def hello_world():
-    return 'Hello from flask boilerplate'
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify("Hello from flask boilerplate"), 200
 
 if __name__ == '__main__':
     with app.app_context():

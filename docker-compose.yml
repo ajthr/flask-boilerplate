@@ -16,6 +16,7 @@ services:
         environment: 
             - DATABASE_HOST=db
             - DATABASE_NAME=app
+            - TEST_DATABASE_NAME=tests
             - DATABASE_PORT=3306
             - DATABASE_USER=${DB_ADMIN_USER}
             - DATABASE_PASSWORD=${DB_ADMIN_PWD}
