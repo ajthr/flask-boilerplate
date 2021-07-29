@@ -4,7 +4,7 @@ services:
     app:
         container_name: app
         build: 
-            context: .
+            context: ./app
         ports: 
             - "5000:5000"
         volumes: 

@@ -36,16 +36,16 @@ def execute_from_command_line(args):
 
 def main():
     # check if all required packages are installed and can be imported
-    # try:
-    #     import flask
-    #     import flask_migrate
-    #     import flask_sqlalchemy
-    #     import marshmallow
-    # except ImportError as exception:
-    #     raise ImportError(
-    #         "Couldn't import required packages."
-    #         "please install packages from requirements file."
-    #     ) from exception
+    try:
+        import flask
+        import flask_migrate
+        import flask_sqlalchemy
+        import marshmallow
+    except ImportError as exception:
+        raise ImportError(
+            "Couldn't import required packages."
+            "please install packages from requirements file."
+        ) from exception
     execute_from_command_line(sys.argv)
 
 if __name__ == '__main__':
