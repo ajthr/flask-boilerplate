@@ -21,9 +21,12 @@ def execute_from_command_line(args):
         os.system("python app.py")
 
 def main():
-    os.environ.setdefault('CONFIG', 'config.settings')
+    # check if all required packages are installed and can be imported
     try:
-        from app import app, db
+        import flask
+        import flask_migrate
+        import flask_sqlalchemy
+        import marshmallow
     except ImportError as exception:
         raise ImportError(
             "Couldn't import required packages."
