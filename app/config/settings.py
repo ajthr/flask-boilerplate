@@ -18,9 +18,9 @@ SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{}:{}@{}:{}/{}".format(DATABASE["USER
                                                                   DATABASE["DB"])
 
 SQLALCHEMY_TEST_DATABASE_URI = "mysql+pymysql://{}:{}@{}:{}/{}".format(DATABASE["USER"],
-                                                                  DATABASE["PASSWORD"],
-                                                                  DATABASE["HOST"],
-                                                                  DATABASE["PORT"],
-                                                                  DATABASE["TEST_DB"])
+                                                                       DATABASE["PASSWORD"],
+                                                                       DATABASE["HOST"],
+                                                                       DATABASE["PORT"],
+                                                                       DATABASE["TEST_DB"])
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False

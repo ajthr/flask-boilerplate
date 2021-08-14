@@ -3,7 +3,7 @@ import unittest
 from app import app, db
 from config import settings
 
-class UsersTests(unittest.TestCase):
+class AppTests(unittest.TestCase):
     def setUp(self):
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False
@@ -19,12 +19,4 @@ class UsersTests(unittest.TestCase):
         with app.app_context():
             db.drop_all()
 
-    def test_home(self):
-        response = self.app.get('/')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn(b"Hello from flask boilerplate", response.data)
-
-    def test_user_home(self):
-        response = self.app.get('/users/')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn(b"Hello from users service", response.data)
+    # create more tests
