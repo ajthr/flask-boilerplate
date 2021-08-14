@@ -20,8 +20,7 @@ Flask Restful API Boilerplate
 
 ### with docker
 
-- Open a command line window and go to the project's directory.
-- create a .env file and add environment variables.
+- create a .env file in the working directory and add environment variables.
     ```
     DB_ADMIN_USER=user
     DB_ADMIN_PWD=userpwd
@@ -34,7 +33,7 @@ Flask Restful API Boilerplate
 
 ### without docker
 
-- make sure postresql is installed in the system.
+- make sure mysql is installed in the system.
 - clone repo and go to the project's directory.
 - install the dependencies:\
     `pip install -r requirements.txt`
