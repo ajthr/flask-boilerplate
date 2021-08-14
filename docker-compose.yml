@@ -4,15 +4,15 @@ services:
     app:
         container_name: app
         build: 
-            context: ./app
+            context: .
         ports: 
             - "5000:5000"
         volumes: 
             - ./app:/app
         command: >
-            sh -c "python manage.py init &&
-                    python manage.py migrate &&
-                    python manage.py runserver"
+            sh -c "flask make &&
+                    flask migrate &&
+                    flask run --host 0.0.0.0"
         environment: 
             - DATABASE_HOST=db
             - DATABASE_NAME=app
@@ -32,8 +32,8 @@ services:
             MYSQL_PASSWORD: ${DB_ADMIN_PWD}
             MYSQL_ROOT_PASSWORD: ${DB_ROOT_PWD}
         volumes:
-               - ./app/db_data:/var/lib/mysql
-               - ./app/initdb:/docker-entrypoint-initdb.d
+               - ./db_data:/var/lib/mysql
+               - ./initdb:/docker-entrypoint-initdb.d
         ports:
             - "3306"
         healthcheck:
