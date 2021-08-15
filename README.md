@@ -1,3 +1,5 @@
+[![build](https://github.com/ajthr/flask-boilerplate/actions/workflows/ci.yml/badge.svg)](https://github.com/ajthr/flask-boilerplate/actions/workflows/ci.yml)
+
 flask-boilerplate
 =================
 
@@ -8,7 +10,7 @@ what does flask-boilerplate include
 
 -   Custom commands for ease of use
     -   make - Adds a migrations folder to the application.
-    -   migrate - Generates and Applies migration to the database.
+    -   migrate - Generates and Applies migration to the database after database is ready to accept connections.
     -   test - Run tests for the application.
     -   create-app - Create an app with a predefined structure.
     -   deploy - Run app with gunicorn
