@@ -1,9 +1,5 @@
 name: Flask Application
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request]
 jobs:
   test-with-docker:
     runs-on: ubuntu-latest
