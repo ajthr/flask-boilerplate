@@ -21,7 +21,8 @@ services:
             - DATABASE_USER=${DB_ADMIN_USER}
             - DATABASE_PASSWORD=${DB_ADMIN_PWD}
         depends_on: 
-            - db
+            db:
+                condition: service_healthy
     db:
         container_name: database
         image: mysql:8
@@ -35,3 +36,6 @@ services:
                - ./initdb:/docker-entrypoint-initdb.d
         ports:
             - "3306"
+        healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-P", "3306"]
+            retries: 10
