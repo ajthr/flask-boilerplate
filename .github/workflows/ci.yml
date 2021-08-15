@@ -11,5 +11,3 @@ jobs:
           DB_ADMIN_USER: "Admin"
           DB_ADMIN_PWD: ${{ secrets.DB_ADMIN_PWD }}
           DB_ROOT_PWD: ${{ secrets.DB_ROOT_PWD }}
-      - name: Run tests
-        run: docker exec app sh -c "flask test"
