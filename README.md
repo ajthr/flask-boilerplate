@@ -1,4 +1,4 @@
-[![build](https://github.com/ajthr/flask-boilerplate/actions/workflows/ci.yml/badge.svg)](https://github.com/ajthr/flask-boilerplate/actions/workflows/ci.yml)
+[![build](https://github.com/ajthr/flask-boilerplate/actions/workflows/ci.yml/badge.svg)](https://github.com/ajthr/flask-boilerplate/actions/workflows/ci.yml)   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  ![version](https://img.shields.io/badge/version-0.1-orange)
 
 flask-boilerplate
 =================
@@ -45,14 +45,14 @@ without docker
 -   make sure MySQL is installed in the system.
 -   only the app folder is required to run the project without docker.
     you may delete the rest.
--   create a .env file in the app directory and add environment variables
+-   export environment variables
     ```
-    DATABASE_HOST=<host>
-    DATABASE_NAME=<name>
-    TEST_DATABASE_NAME=<test_db name>
-    DATABASE_PORT=<port>
-    DATABASE_USER=<user>
-    DATABASE_PASSWORD=userpwd
+    $ export DATABASE_HOST=<host>
+    $ export DATABASE_NAME=<name>
+    $ export TEST_DATABASE_NAME=<test_db_name>
+    $ export DATABASE_PORT=<port>
+    $ export DATABASE_USER=<user>
+    $ export DATABASE_PASSWORD=userpwd
     ```
 
 -   clone the repo and go to the project's directory.
