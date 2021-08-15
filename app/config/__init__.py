@@ -1,6 +1,6 @@
 import os
 import click
-from flask import Flask
+from flask import Flask, config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_marshmallow import Marshmallow
@@ -81,3 +81,16 @@ def flask_create_app(app):
             if file.get("content") != "":
                 f.write(file.get("content"))
             f.close()
+
+@app.cli.command("deploy")
+@click.option("-h", "--host", "host", default="0.0.0.0")
+@click.option("-p", "--port", "port", default=5000)
+@click.option("-w", "--workers", "workers", default=1)
+@click.option("-k", "--worker-class", "worker_class", default="sync")
+@click.option("-n", "--name", "app_name")
+@click.option("-c", "--config", "config")
+def flask_deploy(host, port, workers, worker_class, app_name, config):
+    if config is not None:
+        os.system("gunicorn -w {} -b {}:{} -k {} -n {} -c {} app:app".format(workers, host, port, worker_class, app_name, config))
+    else:
+        os.system("gunicorn -w {} -b {}:{} -k {} -n {} app:app".format(workers, host, port, worker_class, app_name))

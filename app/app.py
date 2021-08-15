@@ -2,7 +2,8 @@ from config import app, db
 
 # register blueprints here
 
-@app.route("/", methods=["GET"])
+# example route
+@app.get("/")
 def home():
     return "Flask Boilerplate v0.1.0", 200
 

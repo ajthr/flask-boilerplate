@@ -11,6 +11,7 @@ what does flask-boilerplate include
     -   migrate - Generates and Applies migration to the database.
     -   test - Run tests for the application.
     -   create-app - Create an app with a predefined structure.
+    -   deploy - Run app with gunicorn
 -   Mysql for DB
     -   Mysql is configured and ready to be used.
 -   Project structure
