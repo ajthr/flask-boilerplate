@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build container
-        run: docker-compose up -d
+        run: docker-compose up --build
       - name: Run tests
         run: docker exec -it app sh -c "flask test"
