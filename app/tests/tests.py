@@ -19,4 +19,7 @@ class AppTests(unittest.TestCase):
         with app.app_context():
             db.drop_all()
 
-    # create more tests
+    def test_home(self):
+        response = self.app.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"Flask Boilerplate v0.1.0", response.data)
