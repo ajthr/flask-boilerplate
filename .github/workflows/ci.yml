@@ -10,6 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build container
-        run: docker-compose up --build
+        run: docker-compose up -d
+        env:
+          DB_ADMIN_USER: "Admin"
+          DB_ADMIN_PWD: ${{ secrets.DB_ADMIN_PWD }}
+          DB_ROOT_PWD: ${{ secrets.DB_ROOT_PWD }}
       - name: Run tests
         run: docker exec -it app sh -c "flask test"
