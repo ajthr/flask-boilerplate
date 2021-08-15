@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_marshmallow import Marshmallow
 
-from config import settings
+from config import settings, utils
 
 app = Flask(__name__)
 
@@ -32,6 +32,7 @@ def flask_make():
 @app.cli.command("migrate")
 def flask_migrate():
     """Autogenerate a new revision file and Upgrade to a later version."""
+    utils.wait_for_db(db)
     if os.path.isdir("migrations"):
         os.system("flask db migrate")
         os.system("flask db upgrade")
