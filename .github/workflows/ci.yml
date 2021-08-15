@@ -1,0 +1,15 @@
+name: Flask Application
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  test-with-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build container
+        run: docker-compose up -d
+      - name: Run tests
+        run: docker exec -it app sh -c "flask test"
