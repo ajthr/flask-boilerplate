@@ -1,4 +1,4 @@
-[![test](https://github.com/ajthr/flask-boilerplate/actions/workflows/test.yml/badge.svg)](https://github.com/ajthr/flask-boilerplate/actions/workflows/test.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![version](https://img.shields.io/badge/version-0.1-orange)
+[![test](https://github.com/ajthr/flask-boilerplate/actions/workflows/test.yml/badge.svg)](https://github.com/ajthr/flask-boilerplate/actions/workflows/test.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![version](https://img.shields.io/badge/version-0.2-orange)
 
 # flask-boilerplate
 
