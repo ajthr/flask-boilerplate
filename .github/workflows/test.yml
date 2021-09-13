@@ -1,0 +1,20 @@
+name: test
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: set up python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: install dependencies
+      run: |
+        sudo python -m pip install --upgrade pip
+        sudo pip install cookiecutter
+    - name: run test script
+      run: |
+         chmod +x ./test.sh
+         sudo ./test.sh
+      shell: bash
