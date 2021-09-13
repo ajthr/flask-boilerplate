@@ -8,7 +8,7 @@ DATABASE = {
     'PORT': os.environ.get('DATABASE_PORT'),
     'USER': os.environ.get('DATABASE_USER'),
     'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-    'TEST_DB': os.environ.get('TEST_DATABASE_NAME'),
+    'TEST_DB': 'tests',
 }
 
 SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{}:{}@{}:{}/{}".format(DATABASE["USER"],

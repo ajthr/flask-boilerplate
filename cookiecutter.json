@@ -1,0 +1,9 @@
+{
+    "project_name": "flask boilerplate",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "mysql_user": "admin",
+    "mysql_password": "password",
+    "mysql_root_password": "root_password",
+    "mysql_database": "{{ cookiecutter.project_slug }}",
+    "secret_key": "super_secret"
+}

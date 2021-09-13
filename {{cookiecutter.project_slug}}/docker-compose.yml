@@ -2,7 +2,7 @@ version: "3"
 
 services: 
     app:
-        container_name: app
+        container_name: {{ cookiecutter.project_slug }}
         build: 
             context: .
         ports: 
@@ -15,7 +15,7 @@ services:
                     flask run --host 0.0.0.0"
         environment: 
             - DATABASE_HOST=db
-            - DATABASE_NAME=app
+            - DATABASE_NAME={{ cookiecutter.project_slug }}
             - TEST_DATABASE_NAME=tests
             - DATABASE_PORT=3306
             - DATABASE_USER=${DB_ADMIN_USER}
@@ -23,7 +23,6 @@ services:
         depends_on: 
             - db
     db:
-        container_name: database
         image: mysql:8
         restart: always
         environment:

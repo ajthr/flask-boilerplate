@@ -83,6 +83,7 @@ def flask_create_app(app):
                 f.write(file.get("content"))
             f.close()
 
+
 @app.cli.command("deploy")
 @click.option("-h", "--host", "host", default="0.0.0.0")
 @click.option("-p", "--port", "port", default=5000)
@@ -92,6 +93,8 @@ def flask_create_app(app):
 @click.option("-c", "--config", "config")
 def flask_deploy(host, port, workers, worker_class, app_name, config):
     if config is not None:
-        os.system("gunicorn -w {} -b {}:{} -k {} -n {} -c {} app:app".format(workers, host, port, worker_class, app_name, config))
+        os.system("gunicorn -w {} -b {}:{} -k {} -n {} -c {} app:app".format(workers,
+                  host, port, worker_class, app_name, config))
     else:
-        os.system("gunicorn -w {} -b {}:{} -k {} -n {} app:app".format(workers, host, port, worker_class, app_name))
+        os.system("gunicorn -w {} -b {}:{} -k {} -n {} app:app".format(workers,
+                  host, port, worker_class, app_name))

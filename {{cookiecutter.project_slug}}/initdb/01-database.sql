@@ -2,8 +2,8 @@
 # creates multiple databases in the same container.
 
 # create databases
-CREATE DATABASE IF NOT EXISTS `app`;
+CREATE DATABASE IF NOT EXISTS `{{ cookiecutter.project_slug }}`;
 CREATE DATABASE IF NOT EXISTS `tests`;
 
-# grant all privilages to admin
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%';
+# grant all privilages to user
+GRANT ALL PRIVILEGES ON *.* TO '{{ cookiecutter.mysql_user }}'@'%';
