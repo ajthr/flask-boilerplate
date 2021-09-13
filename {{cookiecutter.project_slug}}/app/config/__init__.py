@@ -43,6 +43,7 @@ def flask_migrate():
 @app.cli.command("test")
 def flask_test():
     """Run tests for all apps."""
+    utils.wait_for_db(db)
     os.system("python -m unittest discover")
 
 
