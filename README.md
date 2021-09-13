@@ -1,18 +1,16 @@
-[![build](https://github.com/ajthr/flask-boilerplate/actions/workflows/ci.yml/badge.svg)](https://github.com/ajthr/flask-boilerplate/actions/workflows/ci.yml)   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  ![version](https://img.shields.io/badge/version-0.1-orange)
+[![test](https://github.com/ajthr/flask-boilerplate/actions/workflows/test.yml/badge.svg)](https://github.com/ajthr/flask-boilerplate/actions/workflows/test.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![version](https://img.shields.io/badge/version-0.1-orange)
 
-flask-boilerplate
-=================
+# flask-boilerplate
 
-Flask Restful API Boilerplate
+Flask Boilerplate for app and api
 
-what does flask-boilerplate include
------------------------------------
+## Features
 
 -   Custom commands for ease of use
     -   make - Adds a migrations folder to the application.
     -   migrate - Generates and Applies migration to the database after database is ready to accept connections.
     -   test - Run tests for the application.
-    -   create-app - Create an app with a predefined structure.
+    -   create-app - Create an app with a [predefined structure](docs/app_structure.md).
     -   deploy - Run app with gunicorn
 -   Mysql for DB
     -   Mysql is configured and ready to be used.
@@ -21,61 +19,72 @@ what does flask-boilerplate include
     -   Components can be isolated.
 -   Dockerized
 
-### Running the project
+## Quick Start
 
-with docker
------------
+First, install cookiecutter if you don't already have it:
 
--   create a .env file in the working directory and add environment variables.
-    ```
-    DB_ADMIN_USER=<user> 
-    DB_ADMIN_PWD=<userpwd>
-    DB_ROOT_PWD=<rootpwd>
-    ```
+```bash
+pip3 install cookiecutter
+```
 
--   Build services:
-    ```docker-compose build```
+Second, install docker-compose if you don't already have it:
 
--   Run the project:
-    ```docker-compose up```
+[docker-compose installation official
+docs](https://docs.docker.com/compose/install/).
 
-without docker
---------------
+Then, in the directory you want your project to live:
 
--   make sure MySQL is installed in the system.
--   only the app folder is required to run the project without docker.
-    you may delete the rest.
--   export environment variables
-    ```
-    $ export DATABASE_HOST=<host>
-    $ export DATABASE_NAME=<name>
-    $ export TEST_DATABASE_NAME=<test_db_name>
-    $ export DATABASE_PORT=<port>
-    $ export DATABASE_USER=<user>
-    $ export DATABASE_PASSWORD=userpwd
-    ```
+```bash
+cookiecutter gh:ajthr/flask-boilerplate
+```
 
--   clone the repo and go to the project's directory.
--   install the dependencies:
-    `pip install -r requirements.txt`
+<details><summary>Input Variables</summary>
 
--   create the migrations folder
-    `flask make`
+- project_name [default flask boilerplate]
+- project_slug [default flask_boilerplate] - this is your project directory
+- mysql_user [default admin] - whether to use any external database like mongodb atlas
+- mysql_password [default password]
+- mysql_root_password [default root_password]
+- mysql_database [default flask_boilerplate]
+- secret_key [default super_secret]
 
--   generate and apply the migrations. (run this command when you make changes in the database models)
-    `flask migrate`
+</details>
 
--   Run the project:
-    `flask run`
+## Develop
 
-### Testing
+Change into your project directory and run:
 
--   with docker:
-    `docker exec -it app sh -c "flask test"`
+```bash
+docker-compose up -d --build
+```
 
--   without docker:
-    `flask test`
+This will build and run the docker containers.
 
-Copyright (c) 2021 Ajith Ramachandran
+It may take a while to build the first time it's run since it needs to fetch all
+the docker images.
+
+Once you've built the images once, you can simply use regular `docker-compose`
+commands to manage your development environment, for example to start your
+containers:
+
+```bash
+docker-compose up -d
+```
+
+Once this finishes you can navigate to the localhost port, you should see the slightly modified create-react-app page.
+
+## Testing
+
+To run test for the template, run:
+
+```bash
+chmod +x ./test.sh
+sudo ./test.sh
+```
+
+To run test for api, run
+```bash
+docker-compose run --rm api sh -c "flask test"
+```
 
 [MIT License](LICENSE)
